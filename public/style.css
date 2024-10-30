@@ -1,0 +1,297 @@
+/* font */
+
+@font-face {
+    font-family: 'Poppins-Black';
+    src: url("/font/Poppins-Black.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url("/font/Poppins-Light.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "Poppins-Light", sans-serif;
+    background-color: rgb(30, 30, 30);
+    text-align: center;
+    color: white;
+
+}
+
+/* panels */
+
+#mainpanel {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    background-color: rgb(30, 30, 30);
+    border: 5px solid white;
+    width: 95%;
+    height: 80%;
+}
+
+#upperpanel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    border-bottom: 2px solid white;
+}
+
+#wavepanel {
+    height: 40%;
+    border-bottom: 2px solid white;
+}
+
+
+#pianopanel {
+    height: 200px;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard */
+        
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+        
+    -webkit-touch-callout: none;
+}
+
+#bottompanel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+#slidersdiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#buttonsdiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* wavepanel */
+
+#waveform{
+    height: 100%;
+}
+
+/* icons */
+
+#upperpanel img {
+    height: 60%;
+}
+
+#bottompanel img {
+    margin: 5px;
+    height: 60%;
+}
+
+#timeSpan {
+    min-width: 72px;
+    font-family: monospace;
+    margin-left: 10px;
+}
+
+#buttonsdiv img {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+
+/* piano */
+
+#pianopanel {
+    display: flex;
+    background-color: rgb(30, 30, 30);
+    padding: 6.5px;  
+    border-radius: 6.5px;  
+    overflow-x: auto;
+    white-space: nowrap;
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.key {
+    flex: 0 0 auto;
+    width: 26px; 
+    height: 156px;  
+    margin: 0 1.3px;
+    background-color: #fff;
+    border: 1.3px solid #000;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+
+.key.active {
+    background-color: #b3e6ff;
+}
+
+.black-key {
+    width: 15.6px;  
+    height: 104px;  
+    background-color: #000;
+    margin-left: -9.1px;  
+    margin-right: -9.1px;  
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.noteLabel {
+    font-family: "Poppins-Light", sans-serif;
+    color: #000000ba;
+    position: relative;
+    bottom: -125px;
+    margin: 0 auto;
+}
+
+/* controls */
+
+.controlscontainer {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.controlsdiv {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-basis: 50%;
+    box-sizing: border-box;
+}
+
+.controlsdiv img {
+    height: 40px;
+    width: 40px;
+    margin: 0;
+}
+
+.controlsdiv input[type="number"] {
+    background-color: rgb(30, 30, 30);;
+    border: none;
+    color: white;
+    text-align: right;
+    font-family: 'Poppins', sans-serif;
+    width: 6ch;
+}
+
+#mainpanel{
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .controlscontainer span {
+        display: none;
+    }
+
+    #buttonsdiv {
+        padding: 5px;
+    }
+
+    #buttonsdiv img {
+        height: 35px;
+        width: 35px;
+        margin: 3px;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+    #slidersdiv {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .controlscontainer {
+        width: 100%;
+        min-width: unset;
+        margin: 5px 0;
+    }
+
+    .controlsdiv {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .controlsdiv input[type="range"] {
+        width: 50%;
+        margin: 0 10px;
+    }
+
+    .controlsdiv input[type="number"] {
+        min-width: 60px;
+    }
+
+    .controlsdiv img {
+        height: 30px;
+        flex-shrink: 0;
+    }
+
+    #buttonsdiv {
+        padding: 3px;
+    }
+
+    #buttonsdiv img {
+        height: 30px;
+        width: 30px;
+        margin: 2px;
+    }
+
+    #timeSpan {
+        min-width: 65px;
+        font-size: 0.9em;
+    }
+
+}
+
+@media only screen and (max-width: 320px) {
+    #buttonsdiv img {
+        height: 25px;
+        width: 25px;
+        margin: 1px;
+    }
+
+    #timeSpan {
+        min-width: 60px;
+        font-size: 0.8em;
+    }
+
+    /* Hide rewind/forward buttons on very small screens */
+    #rewindIcon,
+    #forwardIcon {
+        display: none;
+    }
+}

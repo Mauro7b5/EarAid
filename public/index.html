@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarAid</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./icons/earlogo.svg" type="image/x-icon">
+</head>
+<body>
+    <div id="mainpanel">
+        <div id="upperpanel">
+            <img src="/icons/open.svg" alt="open" id="openIcon">
+            <input type="file" id="fileInput" style="display: none;">
+            <img src="/icons/flag.svg" alt="flag" id="flagIcon">   
+            <img src="/icons/undoflag.svg" alt="undo flag" id="undoFlagIcon">                
+            <img src="/icons/selectionStart.svg" alt="selection start" id="selectionStartIcon">        
+            <img src="/icons/selectionEnd.svg" alt="selection end" id="selectionEndIcon">        
+            <img src="/icons/clearSelection.svg" alt="clear selection" id="clearSelectionIcon">
+            <img src="/icons/spectrogram.svg" alt="spectrogram" id="spectrogramIcon">
+            <img src="/icons/freeze.svg" alt="freeze" id="freezeIcon">
+            <img src="/icons/download.svg" alt="download" id="downloadIcon">
+        </div>
+        <div id="wavepanel">
+            <div id="waveform"></div>
+        </div>
+        <div id="pianopanel"></div>
+        <div id="bottompanel">
+            <div id="slidersdiv">
+                <div id="zoomdiv" class="controlscontainer">
+                    <span>Zoom</span>
+                    <div id="zoomcontrols" class="controlsdiv">
+                        <img src="/icons/Zoom.svg" alt="zoom" id="zoomIcon">
+                        <input type="range" value="0" step="1" min="0" max="200" id="zoomSlider" disabled>
+                        <input id="zoomNumber" type="number" step="1" min="0" max="100" value="0" disabled>%
+                    </div>
+                </div>
+                <div id="pitchshifterdiv" class="controlscontainer">
+                    <span>Pitch</span>
+                    <div id="pitchshiftercontrols" class="controlsdiv">
+                        <img id="naturalIcon" src="/icons/bequadro.svg" alt="bequadro">
+                        <input id="pitchRange" type="range" step="1" min="-12" max="12" value="0" disabled>
+                        <input id="pitchNumber" type="number" step="1" min="-12" max="12" value="0" disabled>st
+                    </div>
+                </div>
+                <div id="ratediv" class="controlscontainer">
+                    <span>Speed</span>
+                    <div id="speedcontrols" class="controlsdiv">
+                        <img src="/icons/speed.svg" alt="speed" id="speedIcon">
+                        <input type="range" value="100" step="1" min="40" max="130" id="speedSlider" disabled>
+                        <input type="number" value="100" step="1" min="40" max="130" id="speedNumber" disabled>%
+                    </div>
+                </div>
+                <div id="volumediv" class="controlscontainer">
+                    <span>Volume</span>
+                    <div id="volumecontrols" class="controlsdiv">
+                        <img src="/icons/volume.svg" alt="mute" id="muteIcon">
+                        <input type="range" value="1" step="any" min="0" max="1" id="volumeSlider">
+                        <input id="volumeNumber" type="number" step="1" min="0" max="100" value="100">%
+                    </div>
+                </div>
+            </div>
+            <div id="buttonsdiv">
+                <img src="/icons/loop.svg" alt="loop" id="loopIcon">
+                <img src="/icons/toBeginning.svg" alt="toStart" id="toStartIcon">
+                <img src="/icons/rwd5s.svg" alt="rewind" id="seekBackIcon">
+                <img src="/icons/play.svg" alt="play" id="playIcon">
+                <img src="/icons/pause.svg" alt="pause" id="pauseIcon">
+                <img src="/icons/fwd5s.svg" alt="forward" id="seekForwardIcon">
+                <img src="/icons/toEnd.svg" alt="toEnd" id="toEndIcon">
+                <span id="timeSpan">00:00.00</span>
+            </div>
+        </div>
+    </div>
+</body>
+<a href="" id="download_link"></a>
+<script src="/js/dependencies/tone.js"></script>
+<script src="/js/dependencies/wavesurfer.js"></script>
+<script src="/js/dependencies/plugins/regions.js"></script>
+<script src="/js/dependencies/plugins/timeline.js"></script>
+<script src="/js/dependencies/plugins/spectrogram.js"></script>
+<script src="/js/dependencies/plugins/minimap.js"></script>
+<script src="/js/library.js" defer></script>
+<script src="/js/script.js" defer></script>
+</html>
