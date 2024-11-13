@@ -5,16 +5,20 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "webpack"
   },
   "author": "Mauro Fratoni",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1",
+    "granular-js": "^0.6.0",
     "http": "^0.0.1-security",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   }
 }

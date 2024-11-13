@@ -250,47 +250,53 @@ async function captureAudioWindowOnPlaybackTime() {
 // Setup granular player with the captured buffer
 function setupGranularPlayer(buffer) {
     if (grainPlayer) {
-        grainPlayer.dispose()
+        grainPlayer = null
     }
-    
-    freezeGain = new Tone.Gain(0).connect(pitchShifter)
 
-    // Add a subtle reverb for smoothing
-    const freeVerb = new Tone.Freeverb({
-        roomSize: 0.9, 
-        wet: 0.9,
-        decay: 5 
-    }).connect(freezeGain)
+    freezeGain = audioContext.createGain()
     
-    grainPlayer = new Tone.GrainPlayer({
-        url: buffer,
-        loopStart: 0,
-        loopEnd: buffer.duration,
-        loop: true,
-        grainSize: GRAIN_SIZE,
-        overlap: GRAIN_OVERLAP,
-        playbackRate: PLAYBACK_RATE,
-        volume: 0, 
-    }).connect(freeVerb)
+    grainPlayer = new window.Granular({
+        audioContext: audioContext,
+        envelope: {
+          attack: 0.5,
+          release: 0.5
+        },
+        density: GRAIN_DENSITY,
+        spread: GRAIN_SPREAD,
+        pitch: 1
+      })
 
-    freezeGain.disconnect()
-    freezeGain.connect(pitchShifter)
+    freezeReverb = new Tone.Reverb(FREEZE_REVERB_DECAY)
+      
+    freezeGain = audioContext.createGain()
+    Tone.connect(freezeGain, freezeReverb)
+    Tone.connect(freezeReverb, gainNode)
+    
+    grainPlayer.setBuffer(buffer)
+    grainPlayer.disconnect()
+    grainPlayer.connect(freezeGain)
+    console.log(freezeGain)
 }
 
 // activates granular freeze
 async function toggleFreeze() {
     if (!freezeActive && cursor && waveSurfer) {
         try {
+            // Pause main playback
+            waveSurfer.pause()
             // Capture audio window
             frozenBuffer = await captureAudioWindowOnPlaybackTime()
-            if (frozenBuffer) {
-                // Pause main playback
-                waveSurfer.pause()
-                
+            if (frozenBuffer) {                
                 // Setup and start granular playback
                 setupGranularPlayer(frozenBuffer)
-                grainPlayer.start()
-                freezeGain.gain.input.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.5)
+                // grainPlayer.start()
+                for (let index = 0; index < VOICES_NUMBER; index++) {                    
+                    grainVoices.push(grainPlayer.startVoice({
+                        position: FREEZE_WINDOW / VOICES_NUMBER * index,
+                        volume: 1/VOICES_NUMBER/2
+                    }))
+                }
+                // freezeGain.gain.input.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.5)
                 
                 freezeActive = true
                 freezeButton.src = "/icons/redFreeze.svg"
@@ -301,9 +307,13 @@ async function toggleFreeze() {
     } else if (freezeActive) {
         // Stop granular playback
         if (grainPlayer) {
-            grainPlayer.stop()
-            freezeGain.gain.input.linearRampToValueAtTime(0, audioContext.currentTime + 0.5)
-            grainPlayer.dispose()
+            // grainPlayer.stop()
+            grainVoices.forEach(voice => {
+                grainPlayer.stopVoice(voice)
+            })
+            grainVoices = []
+            // freezeGain.gain.input.linearRampToValueAtTime(0, audioContext.currentTime + 0.5)
+            // grainPlayer.dispose()
             grainPlayer = null
         }
         
@@ -448,6 +458,10 @@ function generateFileName() {
     const originName = fileInput.files[0].name
     const pos = originName.lastIndexOf('.')
     const noExt = originName.slice(0, pos)
+    const speed = speedNumber.value
+    if (speed != 100) {
+        return `${noExt}.${speed}%.wav`
+    }
     return `${noExt}.processed.wav`
 }
 

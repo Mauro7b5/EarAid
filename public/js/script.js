@@ -199,6 +199,7 @@ const resizeDebounce = debounce(() => {
             })
             reloadMinimap()
         }
+        // waveSurfer.play()
     }
 }, 100)
 
@@ -253,35 +254,45 @@ toEndButton.addEventListener("click", () => {
 })
 
 //  -5s
-const tenBwdButton = document.getElementById("seekBackIcon")
-tenBwdButton.addEventListener("click", () => {
-    try {
-        const currentTime = waveSurfer.getCurrentTime()
-        if (currentTime <= 10) {
-            waveSurfer.seekTo(0)
-        } else {
-            waveSurfer.setTime(currentTime - 5)
+const fiveBwdButton = document.getElementById("seekBackIcon")
+// to prevent multi cursor bug
+let lastSeekTime = 0
+fiveBwdButton.addEventListener("click", () => {
+    const actualTime = audioContext.currentTime
+    if (actualTime > lastSeekTime + 0.5) {
+        try {
+            const currentTime = waveSurfer.getCurrentTime()
+            if (currentTime <= 10) {
+                waveSurfer.seekTo(0)
+            } else {
+                waveSurfer.setTime(currentTime - 5)
+            }
+            placeCursor(waveSurfer.getCurrentTime())
+            lastSeekTime = actualTime
+        } catch (err) {
+            console.log(err)
         }
-        placeCursor(waveSurfer.getCurrentTime())
-    } catch (error) {
-        console.log("load a file first")
     }
 })
 
 //  +5s
-const tenFwdButton = document.getElementById("seekForwardIcon")
-tenFwdButton.addEventListener("click", () => {
-    try {
-        const currentTime = waveSurfer.getCurrentTime()
-        const duration = waveSurfer.getDuration()
-        if ((currentTime+10) >= duration) {
-            waveSurfer.seekTo(1)
-        } else {
-            waveSurfer.setTime(currentTime + 5)
+const fiveFwdButton = document.getElementById("seekForwardIcon")
+fiveFwdButton.addEventListener("click", () => {
+    const actualTime = audioContext.currentTime
+    if (actualTime > lastSeekTime + 0.5) {
+        try {
+            const currentTime = waveSurfer.getCurrentTime()
+            const duration = waveSurfer.getDuration()
+            if ((currentTime+10) >= duration) {
+                waveSurfer.seekTo(1)
+            } else {
+                waveSurfer.setTime(currentTime + 5)
+            }
+            placeCursor(waveSurfer.getCurrentTime())
+            lastSeekTime = actualTime
+        } catch (err) {
+            console.log(err)
         }
-        placeCursor(waveSurfer.getCurrentTime())
-    } catch (error) {
-        console.log("load a file first")
     }
 })
 
@@ -654,10 +665,13 @@ let freezeActive = false
 let grainPlayer = null
 let frozenBuffer = null
 let freezeGain = null
+let grainVoices = []
+let grainPlayerContext = null
+const VOICES_NUMBER = 5
 const FREEZE_WINDOW = 0.1
-const GRAIN_SIZE = 0.01
-const GRAIN_OVERLAP = 1
-const PLAYBACK_RATE = 0.1
+const GRAIN_DENSITY = 10
+const GRAIN_SPREAD = 1
+const FREEZE_REVERB_DECAY = 0.7
 
 freezeButton.addEventListener("click", toggleFreeze)
 
