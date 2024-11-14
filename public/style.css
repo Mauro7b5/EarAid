@@ -123,6 +123,18 @@ body {
     margin: 5px;
 }
 
+#uploadspan:hover {
+    border-bottom: 1px solid white;
+}
+
+#uploadspandiv {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+}
+
 /* piano */
 
 #pianopanel {

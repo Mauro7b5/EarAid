@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"))
 })
 
+app.get('/help', (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "help.html"))
+})
+
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`)
 })

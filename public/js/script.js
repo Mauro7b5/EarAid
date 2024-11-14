@@ -14,6 +14,8 @@ window.addEventListener("touchstart", initSetup)
 const openIcon = document.getElementById("openIcon")
 const fileInput = document.getElementById("fileInput")
 const waveDiv = document.getElementById("waveform")
+const uploadSpan = document.getElementById("uploadspan")
+const helpIcon = document.getElementById("helpIcon")
 
 let audioFile = null
 let sourceNode = null
@@ -26,7 +28,15 @@ let minimapRegions = null
 let cursor = null
 const CURSOR_COLOR = "#BF55EC"
 
+helpIcon.addEventListener("click", () => {
+    window.open("/help", "_blank");
+})
+
 openIcon.addEventListener("click", () => {
+    fileInput.click()
+})
+
+uploadSpan.addEventListener("click", () => {
     fileInput.click()
 })
 
@@ -41,6 +51,11 @@ fileInput.addEventListener("change", async (event) => {
 
         const audioFileURL = URL.createObjectURL(file)
         audioFile.src = audioFileURL
+
+        if (waveSurfer) {
+            waveSurfer.destroy()
+            waveSurfer = null
+        }
         
         audioFile.onloadedmetadata = async () => {
 
@@ -128,6 +143,7 @@ fileInput.addEventListener("change", async (event) => {
             
             //time indicator and cursor
             const timeSpan = document.getElementById("timeSpan")
+            
             waveSurfer.on("ready", () => {
                 
                 setInterval(() => {
@@ -138,20 +154,20 @@ fileInput.addEventListener("change", async (event) => {
                     const timeString = `${minutes}:${seconds}.${cents}`
                     timeSpan.innerHTML = timeString
                     }, 10)
-                
+                resetCursor()
                 placeCursor(0)
-                }
+                // cursor placing
+                waveSurfer.on("click", (event) => {
+                    const playing = waveSurfer.isPlaying()
+                    const time = waveSurfer.getCurrentTime()
+                    placeCursor(time)
+                    if (playing) {
+                        waveSurfer.play()
+                    }
+                })
+            }
             )
 
-            // cursor placing
-            waveSurfer.on("click", (event) => {
-                const playing = waveSurfer.isPlaying()
-                const time = waveSurfer.getCurrentTime()
-                placeCursor(time)
-                if (playing) {
-                    waveSurfer.play()
-                }
-            })
         }
 
     } else {
@@ -211,6 +227,9 @@ window.addEventListener("resize", resizeDebounce)
 const playButton = document.getElementById("playIcon")
 playButton.addEventListener("click", () => {
     try {
+        if (freezeActive) {
+            toggleFreeze()
+        }
         const cursorTime = cursor.start
         waveSurfer.setTime(cursorTime)
         waveSurfer.play()
@@ -223,6 +242,9 @@ playButton.addEventListener("click", () => {
 const pauseButton = document.getElementById("pauseIcon")
 pauseButton.addEventListener("click", () => {
     try {
+        if (freezeActive) {
+            toggleFreeze()
+        }
         waveSurfer.pause()
     } catch (error) {
         console.log("load a file first")
@@ -233,6 +255,9 @@ pauseButton.addEventListener("click", () => {
 const rewindButton = document.getElementById("toStartIcon")
 rewindButton.addEventListener("click", () => {
     try {
+        if (freezeActive) {
+            toggleFreeze()
+        }
         if (waveSurfer.isPlaying()) {
             waveSurfer.pause()
         }
@@ -247,6 +272,9 @@ rewindButton.addEventListener("click", () => {
 const toEndButton = document.getElementById("toEndIcon")
 toEndButton.addEventListener("click", () => {
     try {
+        if (freezeActive) {
+            toggleFreeze()
+        }
         waveSurfer.seekTo(1)
     } catch (error) {
         console.log("load a file first")
@@ -259,6 +287,9 @@ const fiveBwdButton = document.getElementById("seekBackIcon")
 let lastSeekTime = 0
 fiveBwdButton.addEventListener("click", () => {
     const actualTime = audioContext.currentTime
+    if (freezeActive) {
+        toggleFreeze()
+    }
     if (actualTime > lastSeekTime + 0.5) {
         try {
             const currentTime = waveSurfer.getCurrentTime()
@@ -279,6 +310,9 @@ fiveBwdButton.addEventListener("click", () => {
 const fiveFwdButton = document.getElementById("seekForwardIcon")
 fiveFwdButton.addEventListener("click", () => {
     const actualTime = audioContext.currentTime
+    if (freezeActive) {
+        toggleFreeze()
+    }
     if (actualTime > lastSeekTime + 0.5) {
         try {
             const currentTime = waveSurfer.getCurrentTime()
@@ -669,9 +703,9 @@ let grainVoices = []
 let grainPlayerContext = null
 const VOICES_NUMBER = 5
 const FREEZE_WINDOW = 0.1
-const GRAIN_DENSITY = 10
-const GRAIN_SPREAD = 1
-const FREEZE_REVERB_DECAY = 0.7
+const GRAIN_DENSITY = 5
+const GRAIN_SPREAD = 0
+const FREEZE_REVERB_DECAY = 1
 
 freezeButton.addEventListener("click", toggleFreeze)
 

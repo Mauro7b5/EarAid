@@ -73,6 +73,15 @@ function reloadMinimap() {
 // CURSOR
 
 // Create or place cursor
+function resetCursor() {
+    cursor = regions.addRegion({
+        start: 0,
+        color: CURSOR_COLOR,
+        drag: false,    
+        resize: false,        
+    })
+}
+
 function placeCursor(time) {
     if (!cursor) {
         cursor = regions.addRegion({
@@ -258,8 +267,8 @@ function setupGranularPlayer(buffer) {
     grainPlayer = new window.Granular({
         audioContext: audioContext,
         envelope: {
-          attack: 0.5,
-          release: 0.5
+          attack: 0.1,
+          release: 0.9
         },
         density: GRAIN_DENSITY,
         spread: GRAIN_SPREAD,
@@ -270,7 +279,7 @@ function setupGranularPlayer(buffer) {
       
     freezeGain = audioContext.createGain()
     Tone.connect(freezeGain, freezeReverb)
-    Tone.connect(freezeReverb, gainNode)
+    Tone.connect(freezeReverb, pitchShifter)
     
     grainPlayer.setBuffer(buffer)
     grainPlayer.disconnect()
@@ -293,7 +302,7 @@ async function toggleFreeze() {
                 for (let index = 0; index < VOICES_NUMBER; index++) {                    
                     grainVoices.push(grainPlayer.startVoice({
                         position: FREEZE_WINDOW / VOICES_NUMBER * index,
-                        volume: 1/VOICES_NUMBER/2
+                        volume: 1/VOICES_NUMBER
                     }))
                 }
                 // freezeGain.gain.input.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.5)
