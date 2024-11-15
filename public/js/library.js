@@ -10,7 +10,7 @@ function initSetup() {
                     Tone.setContext(audioContext)
                     pianoGainNode = audioContext.createGain().connect(gainNode)
                     synth = new Tone.PolySynth().connect(pianoGainNode)
-                    pianoGainNode.gain.value = 0.5
+                    pianoGainNode.gain.value = 0.3
                 }
             }
         ).catch(
@@ -35,6 +35,27 @@ function setupGainNode() {
     gainNode.gain.value = 1
     gainNode.connect(audioContext.destination)
 
+}
+
+// ZOOM
+
+//function used for keyboard
+function setZoom(newZoom) {
+    if (newZoom > 100) {
+        newZoom = 100
+    }
+    if (newZoom < 0) {
+        newZoom = 0
+    }
+        
+    const zoomMax = parseFloat(zoomSlider.max)
+    const minPxPerSec = newZoom / 100 * zoomMax
+        
+    waveSurfer.zoom(minPxPerSec)
+    waveSurfer.setTime(waveSurfer.getCurrentTime())
+
+    zoomNumber.value = newZoom
+    zoomSlider.value = (newZoom / 100) * zoomMax
 }
 
 // MINIMAP
@@ -196,6 +217,7 @@ function getFrequency(key) {
 
 // play the note at the right freq
 function playNote(key) {
+    // console.log(`playing key ${key}`)
     const freq = getFrequency(key)
     if (synth) {
         synth.triggerAttack(freq)
@@ -210,6 +232,14 @@ function stopNote(key) {
         synth.triggerRelease(freq)
     }
     document.querySelector(`[data-key-number="${key}"]`).classList.remove('active')
+}
+
+// lifts all notes, used for keyboard
+function resetPianoKeys() {
+    for (const key of activeKeys) {
+        stopNote(key)
+      }
+    activeKeys.clear()
 }
 
 // GRANULAR FREEZE

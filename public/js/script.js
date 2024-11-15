@@ -6,6 +6,7 @@ let pianoGainNode = null
 
 window.addEventListener("click", initSetup)
 window.addEventListener("touchstart", initSetup)
+window.addEventListener("keydown", initSetup)
 
 // aquire audioFile in audioFile global variable
 // create dedicated source node and makes audioFile play from it
@@ -147,12 +148,16 @@ fileInput.addEventListener("change", async (event) => {
             waveSurfer.on("ready", () => {
                 
                 setInterval(() => {
-                    const time = waveSurfer.getCurrentTime()
-                    const minutes = Math.floor(time/60).toString().padStart(2, "0")
-                    const seconds = Math.floor(time%60).toString().padStart(2, "0")
-                    const cents = Math.floor((time%1)*100).toString().padStart(2, "0")
-                    const timeString = `${minutes}:${seconds}.${cents}`
-                    timeSpan.innerHTML = timeString
+                    try {
+                        const time = waveSurfer.getCurrentTime()
+                        const minutes = Math.floor(time/60).toString().padStart(2, "0")
+                        const seconds = Math.floor(time%60).toString().padStart(2, "0")
+                        const cents = Math.floor((time%1)*100).toString().padStart(2, "0")
+                        const timeString = `${minutes}:${seconds}.${cents}`
+                        timeSpan.innerHTML = timeString
+                    } catch (error) {
+                        console.log("time updater waiting for Wavesurfer")
+                    }
                     }, 10)
                 resetCursor()
                 placeCursor(0)
