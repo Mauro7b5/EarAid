@@ -1,0 +1,63 @@
+body {
+    margin-bottom: 200px;
+}
+
+#header {
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+#header h2 {
+    margin: 0;
+}
+
+#earlogo {
+    height: 40px;
+    margin: 0;
+}
+
+p {
+    margin: 10px auto;
+    width: 50%;
+    text-align: left;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.inparagraph {
+    height: 20px;
+}
+
+#tablediv {
+    margin: 10px auto;
+    width: 50%;
+    text-align: center;
+}
+
+div table {
+    margin: 0 auto;
+}
+
+.tablelegend {
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 650px) {
+    p {
+        width: 90%;
+    }
+    #tablediv {
+        width: 90%;
+    }
+}

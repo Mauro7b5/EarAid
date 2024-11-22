@@ -314,7 +314,6 @@ function setupGranularPlayer(buffer) {
     grainPlayer.setBuffer(buffer)
     grainPlayer.disconnect()
     grainPlayer.connect(freezeGain)
-    console.log(freezeGain)
 }
 
 // activates granular freeze

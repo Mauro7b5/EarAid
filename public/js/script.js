@@ -605,11 +605,12 @@ const spectrogramButton = document.getElementById("spectrogramIcon")
 spectrogramButton.addEventListener("click", () => {
     if (waveSurfer) {
         spectrogramPresence = !spectrogramPresence
-        console.log("spectrogram", spectrogramPresence)
+        // console.log("spectrogram", spectrogramPresence)
         const waveFormDiv = document.getElementById("waveform")
         let waveformDivHeight = waveFormDiv.clientHeight
-        console.log(waveformDivHeight)
+        // console.log(waveformDivHeight)
         if(spectrogramPresence) {
+            spectrogramButton.src = "/icons/redSpectrogram.svg"
             spectrogram = WaveSurfer.Spectrogram.create({
                 fftSamples:2048,
                 height: Math.floor(waveformDivHeight*0.45),
@@ -622,6 +623,7 @@ spectrogramButton.addEventListener("click", () => {
             waveSurfer.zoom(zoomLevel)
         } else {
             spectrogram.destroy()
+            spectrogramButton.src = "/icons/spectrogram.svg"
             waveSurfer.setOptions({
                 height: Math.floor(waveformDivHeight*0.9)
             })
