@@ -60,8 +60,15 @@ body {
 
 
 #pianopanel {
+    text-align: left;
     height: 20%;
     min-height: 200px;
+    min-width: 100%;
+    background-color: rgb(52, 52, 52);
+    overflow-x: scroll;
+    /* display: flex;
+    flex-direction: row; */
+    
 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -146,14 +153,15 @@ body {
 
 /* piano */
 
-#pianopanel {
+#pianokeyboard {
     display: flex;
-    background-color: rgb(52, 52, 52);
-    padding: 6.5px;  
     border-radius: 6.5px;  
-    overflow-x: auto;
     white-space: nowrap;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 140px;
     min-width: 100%;
+    max-width: 700px;
     box-sizing: border-box;
     text-align: center;
 }
@@ -161,7 +169,7 @@ body {
 .key {
     flex: 0 0 auto;
     width: 26px; 
-    height: 156px;  
+    height: 140px;  
     margin: 0 1.3px;
     background-color: #fff;
     border: 1.3px solid #000;
@@ -176,7 +184,7 @@ body {
 
 .black-key {
     width: 15.6px;  
-    height: 104px;  
+    height: 95px;  
     background-color: #000;
     margin-left: -9.1px;  
     margin-right: -9.1px;  
@@ -188,8 +196,14 @@ body {
     font-family: "Poppins-Light", sans-serif;
     color: #000000ba;
     position: relative;
-    bottom: -125px;
+    bottom: -115px;
     margin: 0 auto;
+}
+
+#guesscanvas { 
+    background-color: rgb(52, 52, 52);
+    border-radius: 3px;
+    padding-left: 3px;
 }
 
 /* controls */

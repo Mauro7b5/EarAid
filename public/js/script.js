@@ -2,6 +2,8 @@
 
 const audioContext = new AudioContext()
 let gainNode = null
+let analyserNode = null
+const ANALYSERFFTSIZE = 4096
 let pianoGainNode = null
 
 window.addEventListener("click", initSetup)
@@ -76,6 +78,7 @@ fileInput.addEventListener("change", async (event) => {
             
             Tone.connect(sourceNode, pitchShifter)
             Tone.connect(pitchShifter, gainNode)
+            Tone.connect(pitchShifter, analyserNode)
 
             const waveFormDiv = document.getElementById("waveform")
             waveFormDiv.innerHTML = ""
@@ -199,6 +202,7 @@ function debounce(func, delay) {
 const resizeDebounce = debounce(() => {
     if (waveSurfer) {
         
+        const playing = waveSurfer.isPlaying()
         const waveFormDiv = document.getElementById("waveform")
         const height = waveFormDiv.clientHeight
         
@@ -220,7 +224,9 @@ const resizeDebounce = debounce(() => {
             })
             reloadMinimap()
         }
-        // waveSurfer.play()
+        if (playing) {
+            waveSurfer.play()
+        }
     }
 }, 100)
 
@@ -633,7 +639,7 @@ spectrogramButton.addEventListener("click", () => {
 
 // PIANO
 
-const pianoDiv = document.getElementById("pianopanel")
+const pianoDiv = document.getElementById("pianokeyboard")
 
 const keys = 88
 const blackKeyPattern = [1,0,1,1,0,1,1]
@@ -642,10 +648,15 @@ const notes = ["A", "B", "C", "D", "E", "F", "G"]
 let synth = null // ititialized with audiocontext
 let keyCount = 0 
 let noteCount = 0
+let guessCanvas = null
+let FFTData = null
 
 const activeKeys = new Set()
 
 generatePiano()
+setupGuessCanvas()
+let notesConstantData = getNotesData()
+const noteGuessAnimation = requestAnimationFrame(drawNoteGuesses)
 
 // PITCHSHIFTER
 

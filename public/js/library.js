@@ -29,11 +29,14 @@ function initSetup() {
 }
 
 // sets up the master gain node in already initialized audioContext
+// sets up analyser
 function setupGainNode() {
 
     gainNode = audioContext.createGain()
     gainNode.gain.value = 1
     gainNode.connect(audioContext.destination)
+    analyserNode = audioContext.createAnalyser()
+    analyserNode.fftSize = ANALYSERFFTSIZE
 
 }
 
@@ -161,6 +164,89 @@ function generatePiano() {
         noteCount += 1
     }
     
+}
+
+function getNotesData () {
+    const keyboardPanel = document.getElementById("pianokeyboard")
+    let notesdata = {}
+    for (let i = 0; i < keyboardPanel.children.length; i++) {
+        const key = keyboardPanel.children[i]
+        const note = key.id.slice(8)
+        const keynumber = key.dataset.keyNumber
+        notesdata[note] = {freq: getFrequency(keynumber), keynumber: keynumber, Xleft: key.getBoundingClientRect().x, Xcenter:(key.getBoundingClientRect().x + (key.getBoundingClientRect().width / 2)), rect: key.getBoundingClientRect()}
+    }
+    return notesdata
+}
+
+function setupGuessCanvas () {
+    const pianoPanel = document.getElementById("pianopanel")
+    const keyboardPanel = document.getElementById("pianokeyboard")
+    const guessCanvas = document.getElementById("guesscanvas")
+    guessCanvas.height = pianoPanel.offsetHeight - keyboardPanel.offsetHeight - 25
+    guessCanvas.width = keyboardPanel.scrollWidth
+}
+
+function getAnalyserData () {
+    const arrayLenght = analyserNode.frequencyBinCount
+    let dataArray = new Uint8Array(arrayLenght)
+    analyserNode.getByteFrequencyData(dataArray)
+
+    return dataArray
+}
+
+function addFFTData(notesData) {
+    let analyserData = getAnalyserData()
+
+    const fftBinSize = audioContext.sampleRate / analyserNode.fftSize
+
+    for (const note in notesData) {
+        const noteData = notesData[note]
+        const frequency = noteData.freq
+        const binIndex = Math.round(frequency / fftBinSize)
+        const intensity = analyserData[binIndex] / 255
+        notesData[note].nearestFFTBin = intensity
+        // console.log(note, intensity)
+    }
+
+    return notesData
+}
+
+function getColor (value) {
+    const r = value <= 0.5 ? 255 : Math.floor(255 * (1 - (value - 0.5) * 2))
+    const g = Math.floor(255 * value)
+    const b = 0
+    
+    return `rgb(${r}, ${g}, ${b})`
+}
+
+function drawNoteGuesses() {
+    const guessCanvas = document.getElementById("guesscanvas")
+    const ctx = guessCanvas.getContext("2d")
+    ctx.clearRect(0, 0, guessCanvas.width, guessCanvas.height)
+
+    if(analyserNode && waveSurfer) {
+
+        if (waveSurfer.isPlaying() || freezeActive) {
+            FFTData = addFFTData(notesConstantData)
+        }
+        
+        for (const note in FFTData) {
+            const noteData = FFTData[note]
+            
+            const Xcenter = noteData.Xcenter
+            const intensity = FFTData[note].nearestFFTBin
+            const Ypos = guessCanvas.height - (guessCanvas.height * intensity)
+
+            const radius = 3
+            ctx.beginPath()
+            ctx.arc(Xcenter, Ypos, radius, 0, 2 * Math.PI)
+            ctx.fillStyle = getColor(intensity)
+            ctx.fill()
+        }
+        
+    }
+
+    requestAnimationFrame(drawNoteGuesses)
 }
 
 // adds eventlistener to make piano playable
