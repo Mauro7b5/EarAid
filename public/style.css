@@ -61,6 +61,7 @@ body {
 
 #pianopanel {
     text-align: left;
+    scrollbar-width: thin;
     height: 20%;
     min-height: 200px;
     min-width: 100%;
@@ -243,6 +244,10 @@ body {
     width: 100%;
     border: none;
     border-radius: 0;
+}
+
+.fftlabel {
+    padding: 3px;
 }
 
 @media only screen and (max-width: 768px) {

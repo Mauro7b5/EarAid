@@ -3,7 +3,7 @@
 const audioContext = new AudioContext()
 let gainNode = null
 let analyserNode = null
-const ANALYSERFFTSIZE = 4096
+let analyserFFTSize = 4096
 let pianoGainNode = null
 
 window.addEventListener("click", initSetup)
@@ -397,6 +397,50 @@ muteButton.addEventListener("click", () => {
     }
 
 })
+
+// fft selector
+let fftDisplay = false 
+
+const radioButtons = document.querySelectorAll('input[name="FFTselector"]')
+const fftOffLabel = document.getElementById("fftOffLabel")
+const fft2048Label = document.getElementById("fft2048Label")
+const fft4096Label = document.getElementById("fft4096Label")
+const fft8192Label = document.getElementById("fft8192Label")
+const fftLabels = [fftOffLabel, fft2048Label, fft4096Label, fft8192Label]
+
+radioButtons.forEach(radio => {
+    radio.addEventListener("change", (e) => {
+        if (e.target.checked && analyserNode) {
+            fftLabels.forEach(label => {
+                label.style.color = "white"
+            })            
+            if (e.target.id === "FFTRadioOff") {
+                fftDisplay = false
+                fftOffLabel.style.color = "red"
+            } else {
+                fftDisplay = true
+            }
+            if (e.target.id === "FFTRadio2048") {
+                analyserFFTSize = 2048
+                analyserNode.fftSize = analyserFFTSize
+                fft2048Label.style.color = "red"
+            }
+            if (e.target.id === "FFTRadio4096") {
+                analyserFFTSize = 4096
+                analyserNode.fftSize = analyserFFTSize
+                fft4096Label.style.color = "red"
+            }
+            if (e.target.id === "FFTRadio8192") {
+                analyserFFTSize = 8192
+                analyserNode.fftSize = analyserFFTSize
+                fft8192Label.style.color = "red"
+            }
+        }
+    })
+})
+
+
+
 
 // zoom
 const zoomSlider = document.getElementById("zoomSlider")

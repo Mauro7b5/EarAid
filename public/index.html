@@ -37,6 +37,20 @@
         </div>
         <div id="bottompanel">
             <div id="slidersdiv">
+                <div id="fftdiv" class="controlscontainer">
+                    <span>FFT</span>
+                    <div id="FFTRadioDiv" class="controlsdiv">
+                        <img src="/icons/note.svg" alt="FFT" id="noteIcon">
+                        <input type="radio" name="FFTselector" id="FFTRadioOff" style="display: none;" checked>
+                        <label for="FFTRadioOff" id="fftOffLabel" class="fftlabel" style="color: red;">Off</label>
+                        <input type="radio" name="FFTselector" style="display: none;" id="FFTRadio2048">
+                        <label for="FFTRadio2048" id="fft2048Label" class="fftlabel">2048</label>
+                        <input type="radio" name="FFTselector" style="display: none;" id="FFTRadio4096">
+                        <label for="FFTRadio4096" id="fft4096Label" class="fftlabel">4096</label>
+                        <input type="radio" name="FFTselector" style="display: none;" id="FFTRadio8192">
+                        <label for="FFTRadio8192" id="fft8192Label" class="fftlabel">8192</label>
+                    </div>
+                </div>
                 <div id="zoomdiv" class="controlscontainer">
                     <span>Zoom</span>
                     <div id="zoomcontrols" class="controlsdiv">

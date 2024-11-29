@@ -18,30 +18,32 @@
     <p>EarAid is built for those musicians who need a clean audio player with some helpful tools for transcribing, learning, and playing along with musical pieces.</p>
     <h4>How to start</h4>
     <p>
-        First of all click on the "browse" icon <img class="inparagraph" src="/icons/open.svg" alt=""> and select an audio file to upload, once uploaded it will be automatically visualized as a waveform. You can now play it and navigate trough it with the cursor just as you would do on any DAW. There's also a green minimap under the main wave wich always displays the whole waveform, it's useful when zoom is applied.
+        First of all, click on the "browse" icon <img class="inparagraph" src="/icons/open.svg" alt=""> and select an audio file to upload. Once uploaded, it will be automatically visualized as a waveform. You can now play it and navigate through it with the cursor just as you would do on any DAW. There's also a green minimap under the main wave which always displays the whole waveform; it's useful when zoom is applied.
     </p>
     <h4>Tools overview</h4>
     <h5>Markers</h5>
-    <p>To crceate a marker press the flag icon <img src="/icons/flag.svg" alt="" class="inparagraph"> and name the new marker in the window that will appear. To remove it click on the undo icon <img src="/icons/undoflag.svg" alt="" class="inparagraph"> or double click on it if you are on pc.</p>
+    <p>To create a marker, press the flag icon <img src="/icons/flag.svg" alt="" class="inparagraph"> and name the new marker in the window that will appear. To remove it, click on the undo icon <img src="/icons/undoflag.svg" alt="" class="inparagraph"> or double-click on it if you are on a PC.</p>
     <h5>Selection</h5>
-    <p>Marking up a selection is needed either to loop a fragment of your audiofile or to mark the fragment you want to be cropped with the download tool. To set ou update the selection start position put the cursor on the right point of the waveform and click the icon <img src="/icons/selectionStart.svg" alt="" class="inparagraph">, same thing for the end point icon <img src="/icons/selectionEnd.svg" alt="" class="inparagraph">. To clear up the selection click on <img src="/icons/clearSelection.svg" alt="" class="inparagraph">. To activate/turn off selection looping click on the loop icon <img src="/icons/loop.svg" alt="" class="inparagraph">, it will turn red when activated. </p>
+    <p>Marking up a selection is needed either to loop a fragment of your audio file or to mark the fragment you want to crop with the download tool. To set or update the selection start position, put the cursor on the right point of the waveform and click the icon <img src="/icons/selectionStart.svg" alt="" class="inparagraph">, and do the same for the end-point icon <img src="/icons/selectionEnd.svg" alt="" class="inparagraph">. To clear the selection, click on <img src="/icons/clearSelection.svg" alt="" class="inparagraph">. To activate/turn off selection looping, click on the loop icon <img src="/icons/loop.svg" alt="" class="inparagraph">; it will turn red when activated. </p>
     <h5>Spectrogram view</h5>
-    <p>To toggle spectrogram visualization click on the icon <img src="/icons/spectrogram.svg" alt="" class="inparagraph">, consider that the app takes some time (some seconds, more if the file is long) to render the spectrogram every time you turn it on, change the window size or change the zoom parameter.</p>
+    <p>To toggle spectrogram visualization, click on the icon <img src="/icons/spectrogram.svg" alt="" class="inparagraph">. Consider that the app takes some time (a few seconds, more if the file is long) to render the spectrogram every time you turn it on, change the window size, or change the zoom parameter.</p>
     <h5>Freeze</h5>
-    <p>EarAid has a granular freeze tool wich aims to freeze the spectrum of a small time window (100ms) around the cursor. To turn it on/off click on the icon <img src="/icons/freeze.svg" alt="" class="inparagraph">. This could be helpful if you need to figure out a chord or some holded parts. Note that it freeze everything is in the time window so could not work well in the part you want to hear is not well isolated.</p>
+    <p>EarAid has a granular freeze tool which aims to freeze the spectrum of a small time window (100ms) around the cursor. To turn it on/off, click on the icon <img src="/icons/freeze.svg" alt="" class="inparagraph">. This could be helpful if you need to figure out a chord or some held parts. Note that it freezes everything in the time window, so it might not work well if the part you want to hear is not well isolated.</p>
     <h5>Download</h5>
-    <p>The download feature applyes the time stretch and pitch shift parameters to the audio files, crops the selection if active, encodes the modified audio in a .wav file and serves it as a download. Click on the <img src="/icons/download.svg" alt="" class="inparagraph"> icon to do so.</p>
+    <p>The download feature applies the time stretch and pitch shift parameters to the audio files, crops the selection if active, encodes the modified audio in a .wav file, and serves it as a download. Click on the <img src="/icons/download.svg" alt="" class="inparagraph"> icon to do so.</p>
     <h4>Parameters overview</h4>
     <h5>Zoom</h5>
-    <p>You can change zoom level from 0% (the whole waveform is visualized) to 100% (200 pixels per second).</p>
+    <p>You can change the zoom level from 0% (the whole waveform is visualized) to 100% (200 pixels per second).</p>
+    <h5>FFT</h5>
+    <p>It is possible to set the fft window width or turn the fft visualization off. A wider window will provide more definition on the lower tones, but with a thinner one but with a thinner one you will achieve greater precision in the timing of events.</p>
     <h5>Pitch Shift</h5>
-    <p>The pitchshift parameter can be used to adjust the audio pitch, in those cases you need to hear the piece in a different key. You can also click on the icon <img src="/icons/redBequadro.svg" alt="" class="inparagraph"> to reset. It's made with an implementation of <a href="https://www.npmjs.com/package/@soundtouchjs/audio-worklet">soundtouch.js audio worklet</a>.</p>
+    <p>The pitch shift parameter can be used to adjust the audio pitch, in cases where you need to hear the piece in a different key. You can also click on the icon <img src="/icons/redBequadro.svg" alt="" class="inparagraph"> to reset. It's made with an implementation of <a href="https://www.npmjs.com/package/@soundtouchjs/audio-worklet">soundtouch.js audio worklet</a>.</p>
     <h5>Speed</h5>
-    <p>The speed parameter can be used to slow down or speed up the playback without affecting pitch. You can also click on the icon <img src="/icons/redSpeed.svg" alt="" class="inparagraph"> to reset.  It is made using the HTMLMediaElement playbackSpeed feature.</p>
+    <p>The speed parameter can be used to slow down or speed up the playback without affecting pitch. You can also click on the icon <img src="/icons/redSpeed.svg" alt="" class="inparagraph"> to reset. It is made using the HTMLMediaElement playbackSpeed feature.</p>
     <h5>Volume</h5>
     <p>Adjust the master volume. You can also click on the icon <img src="/icons/volume.svg" alt="" class="inparagraph"> to mute/unmute.</p>
-    <h4>Piano</h4>
-    <p>EarAid also features an html piano keyboard wich could be useful to check what you hear. The sound is the sawtooth default synth by <a href="https://tonejs.github.io/">Tone.js</a>.</p>
+    <h4>Piano and FFT</h4>
+    <p>EarAid also features an HTML piano keyboard which could be useful to check what you hear. The sound is a sawtooth synth by <a href="https://tonejs.github.io/">Tone.js</a>. Below the keyboard, you can activate an fft note guessing visualization.</p>
     <h4>Key shortcuts</h4>
     <div id="tablediv">
         <table>
@@ -103,7 +105,7 @@
             </tr>
             <tr>
                 <td>1->7</td>
-                <td>When piano mode is on selects playng octave.</td>
+                <td>When piano mode is on selects playing octave.</td>
             </tr>
             <tr>
                 <td>A->K</td>
@@ -113,7 +115,7 @@
     </div>
     <h4>Compatibility issues</h4>
     <p>
-        Earaid performs best on Windows, Linux, and Android systems with Edge, Chrome, and Firefox browsers. On macOS, it is compatible with Chrome and Firefox but may encounter issues with Safari. On iOS and iPadOS, it has some problems that appear to stem from the different implementation of the new WebAudioWorklet system.
+        EarAid performs best on Windows, Linux, and Android systems with Edge, Chrome, and Firefox browsers. On macOS, it is compatible with Chrome and Firefox but may encounter issues with Safari. On iOS and iPadOS, it has some problems that appear to stem from the different implementation of the new WebAudioWorklet system.
     </p>
 </body>
 </html>

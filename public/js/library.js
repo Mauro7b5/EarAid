@@ -36,7 +36,7 @@ function setupGainNode() {
     gainNode.gain.value = 1
     gainNode.connect(audioContext.destination)
     analyserNode = audioContext.createAnalyser()
-    analyserNode.fftSize = ANALYSERFFTSIZE
+    analyserNode.fftSize = analyserFFTSize
 
 }
 
@@ -182,7 +182,7 @@ function setupGuessCanvas () {
     const pianoPanel = document.getElementById("pianopanel")
     const keyboardPanel = document.getElementById("pianokeyboard")
     const guessCanvas = document.getElementById("guesscanvas")
-    guessCanvas.height = pianoPanel.offsetHeight - keyboardPanel.offsetHeight - 25
+    guessCanvas.height = pianoPanel.offsetHeight - keyboardPanel.offsetHeight - 18
     guessCanvas.width = keyboardPanel.scrollWidth
 }
 
@@ -224,7 +224,7 @@ function drawNoteGuesses() {
     const ctx = guessCanvas.getContext("2d")
     ctx.clearRect(0, 0, guessCanvas.width, guessCanvas.height)
 
-    if(analyserNode && waveSurfer) {
+    if(analyserNode && waveSurfer && fftDisplay) {
 
         if (waveSurfer.isPlaying() || freezeActive) {
             FFTData = addFFTData(notesConstantData)
@@ -235,15 +235,24 @@ function drawNoteGuesses() {
             
             const Xcenter = noteData.Xcenter
             const intensity = FFTData[note].nearestFFTBin
-            const Ypos = guessCanvas.height - (guessCanvas.height * intensity)
-
+            let Ypos = guessCanvas.height - (guessCanvas.height * intensity)
             const radius = 3
+            if (Ypos < radius) {
+                Ypos = radius
+            } else if (Ypos > (guessCanvas.height - radius)) {
+                Ypos = guessCanvas.height - radius
+            }
+
             ctx.beginPath()
             ctx.arc(Xcenter, Ypos, radius, 0, 2 * Math.PI)
             ctx.fillStyle = getColor(intensity)
             ctx.fill()
         }
         
+    }
+
+    if (!fftDisplay) {
+        ctx.clearRect(0, 0, guessCanvas.width, guessCanvas.height)
     }
 
     requestAnimationFrame(drawNoteGuesses)
