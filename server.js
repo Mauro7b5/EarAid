@@ -4,7 +4,7 @@ const https = require('https')
 const fs = require('fs')
 
 const app = express()
-const port = 443
+const port = process.env.port || 443
 
 const options = {
   key: fs.readFileSync(path.join(__dirname, "HTTPS", "private.key")),
