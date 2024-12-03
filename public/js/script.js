@@ -205,25 +205,41 @@ const resizeDebounce = debounce(() => {
         const playing = waveSurfer.isPlaying()
         const waveFormDiv = document.getElementById("waveform")
         const height = waveFormDiv.clientHeight
-        
+
+
+        // to mantain spectrogram and resize it (slow)
+
+        // if(spectrogramPresence) {
+        //     waveSurfer.setOptions({
+        //         height: Math.floor(height*0.45)
+        //     })
+        //     spectrogram.destroy()
+        //     spectrogram = WaveSurfer.Spectrogram.create({
+        //     fftSamples:1024,
+        //     height: Math.floor(height*0.45),
+        //     })
+        //     waveSurfer.registerPlugin(spectrogram)
+        //     reloadMinimap()
+        //     waveSurfer.zoom(zoomLevel)
+        // } else {
+        //     waveSurfer.setOptions({
+        //         height: Math.floor(height*0.9)
+        //     })
+        //     reloadMinimap()
+        // }
+
+        // to remove spectrogram when resized
+
         if(spectrogramPresence) {
-            waveSurfer.setOptions({
-                height: Math.floor(height*0.45)
-            })
-            spectrogram.destroy()
-            spectrogram = WaveSurfer.Spectrogram.create({
-            fftSamples:1024,
-            height: Math.floor(height*0.45),
-            })
-            waveSurfer.registerPlugin(spectrogram)
-            reloadMinimap()
-            waveSurfer.zoom(zoomLevel)
-        } else {
-            waveSurfer.setOptions({
-                height: Math.floor(height*0.9)
-            })
-            reloadMinimap()
+            spectrogramButton.click()
         }
+
+        waveSurfer.zoom(zoomLevel)
+        waveSurfer.setOptions({
+            height: Math.floor(height*0.9)
+        })
+        reloadMinimap()
+
         if (playing) {
             waveSurfer.play()
         }

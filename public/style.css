@@ -54,7 +54,7 @@ body {
 
 #wavepanel {
     height: 40%;
-    min-height: 200px;
+    /* min-height: 200px; */
     border-bottom: 2px solid white;
 }
 
@@ -63,7 +63,7 @@ body {
     text-align: left;
     scrollbar-width: thin;
     height: 20%;
-    min-height: 200px;
+    min-height: 200px; 
     min-width: 100%;
     background-color: rgb(52, 52, 52);
     overflow-x: scroll;
@@ -268,7 +268,7 @@ body {
 
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 680px) and (pointer: coarse) {
 
     #upperpanel {
         height: 10%;
