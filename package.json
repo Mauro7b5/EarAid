@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "https": "node server.js",
-    "http": "node renderServer.js",
+    "http": "node httpServer.js",
     "dev": "nodemon server.js"
   },
   "author": "Mauro Fratoni",
