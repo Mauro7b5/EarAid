@@ -118,6 +118,9 @@ body {
 }
 
 /* icons */
+img {
+    cursor: pointer;
+}
 
 #uppericons img {
     height: 60%;
@@ -142,6 +145,7 @@ body {
 
 #uploadspan:hover {
     border-bottom: 1px solid white;
+    cursor: pointer;
 }
 
 #uploadspandiv {
