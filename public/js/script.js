@@ -488,42 +488,56 @@ const speedButton = document.getElementById("speedIcon")
 const speedSlider = document.getElementById("speedSlider")
 const speedNumber = document.getElementById("speedNumber")
 
+let pitchCompensation = 0
+
 speedSlider.disabled = true //enabled when wavesurver is init
 
 speedSlider.addEventListener("input", (e) => {
-    const sliderValue = e.target.valueAsNumber
-    const playRate = sliderValue / 100
-    speedNumber.value = sliderValue
-    waveSurfer.setPlaybackRate(playRate, true)
-    if (playRate != 1) {
-        speedButton.src = "/icons/redSpeed.svg"
-    } else {
-        speedButton.src = "/icons/speed.svg"
+    if (waveSurfer && pitchShifter) {   
+        const sliderValue = e.target.valueAsNumber
+        const playRate = sliderValue / 100
+        speedNumber.value = sliderValue
+        waveSurfer.setPlaybackRate(playRate, false)
+        pitchCompensation = -12 * Math.log2(playRate)
+        pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(parseFloat(pitchNumber.valueAsNumber) + parseFloat(pitchCompensation))
+        if (playRate != 1) {
+            speedButton.src = "/icons/redSpeed.svg"
+        } else {
+            speedButton.src = "/icons/speed.svg"
+        }
     }
 })
 
 speedNumber.addEventListener("change", () => {
-    if (speedNumber.valueAsNumber > speedSlider.max) {
-        speedNumber.valueAsNumber = speedSlider.max
-    } else if (speedNumber.valueAsNumber < speedSlider.min) {
-        speedNumber.valueAsNumber = speedSlider.min        
-    }
-    speedSlider.value = speedNumber.value
-    const playRate = speedNumber.valueAsNumber / 100
-    waveSurfer.setPlaybackRate(playRate, true)
-    if (playRate != 1) {
-        speedButton.src = "/icons/redSpeed.svg"
-    } else {
-        speedButton.src = "/icons/speed.svg"
+    if (waveSurfer && pitchShifter) {   
+        if (speedNumber.valueAsNumber > speedSlider.max) {
+            speedNumber.valueAsNumber = speedSlider.max
+        } else if (speedNumber.valueAsNumber < speedSlider.min) {
+            speedNumber.valueAsNumber = speedSlider.min        
+        }
+        speedSlider.value = speedNumber.value
+        const playRate = speedNumber.valueAsNumber / 100
+        waveSurfer.setPlaybackRate(playRate, false)
+        pitchCompensation = -12 * Math.log2(playRate)
+        pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(parseFloat(pitchNumber.valueAsNumber) + parseFloat(pitchCompensation))
+        if (playRate != 1) {
+            speedButton.src = "/icons/redSpeed.svg"
+        } else {
+            speedButton.src = "/icons/speed.svg"
+        }
     }
 })
 
 speedButton.addEventListener("click", () => {
-    if (waveSurfer) {
-        speedSlider.valueAsNumber = 100
-        speedNumber.valueAsNumber = 100
-        waveSurfer.setPlaybackRate(1, true)
-        speedButton.src = "/icons/speed.svg"
+    if (waveSurfer && pitchShifter) {        
+        if (waveSurfer) {
+            speedSlider.valueAsNumber = 100
+            speedNumber.valueAsNumber = 100
+            waveSurfer.setPlaybackRate(1, false)
+            pitchCompensation = 0
+            pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(parseFloat(pitchNumber.valueAsNumber) + parseFloat(pitchCompensation))
+            speedButton.src = "/icons/speed.svg"
+        }
     }
 })
 
@@ -729,7 +743,7 @@ naturalIcon.addEventListener("click", () => {
     if (pitchShifter) {
         pitchSlider.value = 0
         pitchNumber.value = 0
-        pitchShifter.parameters.get("pitch").value = 1
+        pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(parseFloat(pitchCompensation))
         naturalIcon.src = "/icons/bequadro.svg"
     }
 })
@@ -737,7 +751,7 @@ naturalIcon.addEventListener("click", () => {
 pitchSlider.addEventListener("input", () => {
     pitchNumber.value = pitchSlider.value
     if (pitchShifter) {
-        pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(pitchNumber.value)
+        pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(parseFloat(pitchNumber.valueAsNumber) + parseFloat(pitchCompensation))
         if (pitchNumber.value != 0) {
             naturalIcon.src = "/icons/redBequadro.svg"
         } else {
@@ -757,7 +771,7 @@ pitchNumber.addEventListener("change", () => {
     }
     pitchSlider.value = pitchNumber.value
     if (pitchShifter) {
-        pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(pitchNumber.valueAsNumber)
+        pitchShifter.parameters.get("pitch").value = semitonesToFrequencyFactor(parseFloat(pitchNumber.valueAsNumber) + parseFloat(pitchCompensation))
         if (pitchNumber.value != 0) {
             naturalIcon.src = "/icons/redBequadro.svg"
         } else {

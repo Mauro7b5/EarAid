@@ -487,9 +487,9 @@ async function createBufferForDownload() {
     const pitchShift = pitchNumber.valueAsNumber
     const pitchCompensation = -12 * Math.log2(playRate)
     const pitchShiftValue = pitchShift + pitchCompensation
-    console.log(pitchCompensation)
-    console.log(pitchShift)
-    console.log(pitchShiftValue)
+    // console.log(pitchCompensation)
+    // console.log(pitchShift)
+    // console.log(pitchShiftValue)
 
     // Calculate window boundaries
     const windowDuration = (endTime - startTime) * playRate
