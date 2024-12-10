@@ -9,8 +9,9 @@ function initSetup() {
                     setupGainNode()
                     Tone.setContext(audioContext)
                     pianoGainNode = audioContext.createGain().connect(gainNode)
-                    synth = new Tone.PolySynth().connect(pianoGainNode)
-                    pianoGainNode.gain.value = 0.3
+                    pianoCompressorNode = audioContext.createDynamicsCompressor().connect(pianoGainNode)
+                    synth = new Tone.PolySynth().connect(pianoCompressorNode)
+                    pianoGainNode.gain.value = 0.5
                 }
             }
         ).catch(
@@ -22,7 +23,8 @@ function initSetup() {
             setupGainNode()
             Tone.setContext(audioContext)
             pianoGainNode = audioContext.createGain().connect(gainNode)
-            synth = new Tone.PolySynth().connect(pianoGainNode)
+            pianoCompressorNode = audioContext.createDynamicsCompressor().connect(pianoGainNode)
+            synth = new Tone.PolySynth().connect(pianoCompressorNode)
             pianoGainNode.gain.value = 0.5
         }
     }
@@ -337,6 +339,16 @@ function resetPianoKeys() {
     activeKeys.clear()
 }
 
+// VOLUME
+
+// Function to convert linear 0->1 value to logarithmic volume factor
+function getLogarithmicVolume(value) {
+    if (value <= 0) return 0
+    const volume = Math.pow(value, 2)
+    return volume
+}
+
+
 // GRANULAR FREEZE
 
 // Function to capture audio around cursor position
@@ -392,8 +404,8 @@ function setupGranularPlayer(buffer) {
     grainPlayer = new window.Granular({
         audioContext: audioContext,
         envelope: {
-          attack: 0.1,
-          release: 0.9
+          attack: 0.2,
+          release: 0.8
         },
         density: GRAIN_DENSITY,
         spread: GRAIN_SPREAD,

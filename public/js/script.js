@@ -5,6 +5,7 @@ let gainNode = null
 let analyserNode = null
 let analyserFFTSize = 4096
 let pianoGainNode = null
+let pianoCompressorNode = null
 
 window.addEventListener("click", initSetup)
 window.addEventListener("touchstart", initSetup)
@@ -367,7 +368,7 @@ volumeSlider.addEventListener("input", () => {
         setupGainNode()
     }
     volumeNumber.valueAsNumber = Math.round(volumeSlider.valueAsNumber * 100)
-    const volume = volumeSlider.valueAsNumber
+    const volume = getLogarithmicVolume(volumeSlider.valueAsNumber)
     gainNode.gain.linearRampToValueAtTime(volume, currentTime + 0.1)
 })
 
@@ -383,15 +384,16 @@ volumeNumber.addEventListener("change", () => {
         volumeNumber.valueAsNumber = volumeNumber.min        
     }
     volumeSlider.valueAsNumber = volumeNumber.valueAsNumber / 100
-    const volume = volumeSlider.valueAsNumber
+    const volume = getLogarithmicVolume(volumeSlider.valueAsNumber)
     gainNode.gain.linearRampToValueAtTime(volume, currentTime + 0.1)
 })
 
 // mute button
 let muted = false
-let volume = volumeSlider.value
 const muteButton = document.getElementById("muteIcon")
+
 muteButton.addEventListener("click", () => { 
+    const volume = getLogarithmicVolume(volumeSlider.valueAsNumber) || 1
 
     if (!gainNode) {  
         setupGainNode()
@@ -407,7 +409,6 @@ muteButton.addEventListener("click", () => {
         const currentTime = audioContext.currentTime
         muted = true
         muteButton.src = "/icons/volumeMuted.svg"
-        volume = volumeSlider.value
         volumeSlider.disabled = true
         gainNode.gain.linearRampToValueAtTime(0, currentTime + 0.1)
     }
