@@ -6,10 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "https": "node server.js",
     "http": "node httpServer.js",
     "dev": "nodemon server.js",
-    "build": "terser dev/dependencies/granular.js dev/dependencies/tone.js dev/dependencies/wavesurfer.js dev/dependencies/minimap.js dev/dependencies/regions.js dev/dependencies/spectrogram.js dev/dependencies/timeline.js dev/library.js dev/script.js dev/keyboard.js --minify --mangle --compress -o public/js/earAid.min.js"
+    "build": "terser dev/dependencies/granular.js dev/dependencies/tone.js dev/dependencies/wavesurfer.js dev/dependencies/minimap.js dev/dependencies/regions.js dev/dependencies/spectrogram.js dev/dependencies/timeline.js dev/library.js dev/script.js dev/keyboard.js --minify --mangle --compress -o public/js/earAid.min.js --toplevel" 
   },
   "author": "Mauro Fratoni",
   "license": "ISC",
