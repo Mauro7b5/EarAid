@@ -52,7 +52,7 @@
         <mxCell id="Ela1EfbPNly_L2jDQacJ-30" value="granular.js&lt;div&gt;granulator&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="350" y="220" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-31" value="Web Audio Api&lt;div&gt;reverbNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-31" value="Web Audio API&lt;div&gt;reverbNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="350" y="270" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-30" target="Ela1EfbPNly_L2jDQacJ-31">
@@ -76,10 +76,10 @@
         <mxCell id="Ela1EfbPNly_L2jDQacJ-39" value="Download" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.2d.download;" vertex="1" parent="1">
           <mxGeometry x="567.6" y="443.1" width="44.8" height="44.8" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-41" value="Offline bufferSourceNode&lt;div&gt;(can crop buffers)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="515" y="180" width="150" height="40" as="geometry" />
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-41" value="&lt;div&gt;Web Audio API&lt;/div&gt;&lt;div&gt;bufferSourceNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="515" y="193.1" width="150" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-42" value="Web Audio Api&lt;div&gt;mediaElementSourceNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-42" value="Web Audio API&lt;div&gt;mediaElementSourceNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="220" y="170" width="150" height="40" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-43" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-10" target="Ela1EfbPNly_L2jDQacJ-42">
