@@ -8,7 +8,8 @@
     "start": "node server.js",
     "http": "node httpServer.js",
     "dev": "nodemon server.js",
-    "build": "terser dev/dependencies/granular.js dev/dependencies/tone.js dev/dependencies/wavesurfer.js dev/dependencies/minimap.js dev/dependencies/regions.js dev/dependencies/spectrogram.js dev/dependencies/timeline.js dev/library.js dev/script.js dev/keyboard.js --minify --mangle --compress -o public/js/earAid.min.js --toplevel" 
+    "build": "terser dev/dependencies/granular.js dev/dependencies/tone.js dev/dependencies/wavesurfer.js dev/dependencies/minimap.js dev/dependencies/regions.js dev/dependencies/spectrogram.js dev/dependencies/timeline.js dev/library.js dev/script.js dev/keyboard.js --minify --mangle --compress -o public/js/earAid.min.js --toplevel",
+    "buildstart": "terser dev/dependencies/granular.js dev/dependencies/tone.js dev/dependencies/wavesurfer.js dev/dependencies/minimap.js dev/dependencies/regions.js dev/dependencies/spectrogram.js dev/dependencies/timeline.js dev/library.js dev/script.js dev/keyboard.js --minify --mangle --compress -o public/js/earAid.min.js --toplevel && node server.js"
   },
   "author": "Mauro Fratoni",
   "license": "ISC",

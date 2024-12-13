@@ -99,6 +99,9 @@ fileInput.addEventListener("change", async (event) => {
                 plugins: [
                     WaveSurfer.Timeline.create({
                         insertPosition: "beforebegin",
+                        primaryLabelInterval: 5,
+                        secondaryLabelOpacity: 0.5,
+                        secondaryLabelInterval: 1,
                         style: {
                             color: "#FFFFFF",
                             },
