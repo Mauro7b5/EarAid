@@ -15,22 +15,6 @@ EarAid is a web audio player designed for musicians who need a clean audio playe
 - Volume Control: Adjust the master volume.
 - Piano and FFT: Use an HTML piano keyboard and activate an FFT note guessing visualization.
 
-## Installation
-To install EarAid, follow these steps:
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/Mauro7b5/EarAid.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd EarAid
-    ```
-3. Install the required dependencies:
-    ```bash
-    npm install
-    ```
-
 ## Usage
 
 ### Local Usage
@@ -38,7 +22,7 @@ To use EarAid locally, follow these steps:
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
+    git clone https://github.com/Mauro7b5/EarAid.git
     ```
 2. Install the dependencies:
     ```sh
@@ -51,7 +35,7 @@ To use EarAid locally, follow these steps:
 4. Open your browser and navigate to `http://localhost`.
 
 ### Hosting
-Browsers always block WebAudioWorklets for security reasons if HTTPS is not used. To host EarAid for clients outside the host machine, you need TLS certificate.crt and private.key in the HTTPS folder, in the repo you'll find a self signed certificate and a key to make it work out the box, substitute them for safety. 
+Since browsers block WebAudioWorklets for security reasons if HTTPS is not used, to host EarAid for clients outside the host machine, you need TLS certificate.crt and private.key in the HTTPS folder, in the repo you'll find a self signed certificate and a key to make it work out the box, substitute them for safety. 
 
 To start the server, run:
 ```sh
