@@ -103,8 +103,8 @@
         <mxCell id="Ela1EfbPNly_L2jDQacJ-47" value="Audio Output" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=none;imageAspect=0;aspect=fixed;image=https://cdn0.iconfinder.com/data/icons/phosphor-fill-vol-4/256/speaker-simple-high-fill-128.png" vertex="1" parent="1">
           <mxGeometry x="265" y="460" width="60" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-48" value="Wave encodr" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="540" y="373.1" width="100" height="40" as="geometry" />
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-48" value="Wave encode" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="373.1" width="100" height="26.9" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-51" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-28" target="Ela1EfbPNly_L2jDQacJ-41">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
