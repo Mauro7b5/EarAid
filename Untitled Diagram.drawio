@@ -5,32 +5,25 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="Ela1EfbPNly_L2jDQacJ-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7DF591;strokeColor=#42B81D;" vertex="1" parent="1">
-          <mxGeometry x="90" y="150" width="400" height="370" as="geometry" />
+          <mxGeometry x="90" y="150" width="380" height="390" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-2" value="AudioContext" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="120" y="150" width="100" height="30" as="geometry" />
+          <mxGeometry x="100" y="153.10000000000002" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-10" value="HTML &amp;lt;audio&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="245" y="200" width="100" height="30" as="geometry" />
+          <mxGeometry x="350" y="100" width="100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-11" value="soundtouch.js&lt;div&gt;PitchShifter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="245" y="300" width="100" height="30" as="geometry" />
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-11" value="soundtouch.js Worklet&lt;div&gt;pitchShifterNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="227.5" y="320" width="135" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-13" target="Ela1EfbPNly_L2jDQacJ-19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-13" value="tone.js&lt;div&gt;Synth&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="115" y="200" width="90" height="30" as="geometry" />
+          <mxGeometry x="115" y="240" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-19" value="Web Audio API&lt;div&gt;CompressorNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="300" width="120" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-22" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-10" target="Ela1EfbPNly_L2jDQacJ-11">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="150" y="370" as="sourcePoint" />
-            <mxPoint x="200" y="320" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-19" value="Web Audio API&lt;div&gt;compressorNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="320" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-23" value="Web Audio API&lt;div&gt;Gain Node&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="240" y="380" width="110" height="40" as="geometry" />
@@ -47,32 +40,20 @@
             <mxPoint x="279" y="390" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-26" value="" style="pointerEvents=1;verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.electro-mechanical.loudspeaker;" vertex="1" parent="1">
-          <mxGeometry x="282.5" y="450" width="25" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-27" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-23" target="Ela1EfbPNly_L2jDQacJ-26">
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-27" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-23" target="Ela1EfbPNly_L2jDQacJ-47">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="380" y="440" as="sourcePoint" />
-            <mxPoint x="295" y="440" as="targetPoint" />
+            <mxPoint x="295" y="455" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-28" value="Audio File" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#005F4B;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam2.audio_file;" vertex="1" parent="1">
-          <mxGeometry x="397" y="70" width="28.000000000000004" height="39" as="geometry" />
+          <mxGeometry x="500" y="50" width="28.000000000000004" height="39" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-29" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-28" target="Ela1EfbPNly_L2jDQacJ-10">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="350" as="sourcePoint" />
-            <mxPoint x="450" y="300" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="330" y="130" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-30" value="granular.js&lt;div&gt;granulator&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="220" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-30" value="granular.js&lt;div&gt;Granulator&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="200" width="90" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-31" value="Web Audio Api&lt;div&gt;ReverbNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="380" y="250" width="90" height="30" as="geometry" />
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-31" value="Web Audio Api&lt;div&gt;reverbNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="270" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-32" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-30" target="Ela1EfbPNly_L2jDQacJ-31">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -80,23 +61,95 @@
             <mxPoint x="450" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-33" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-31" target="Ela1EfbPNly_L2jDQacJ-11">
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-33" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.941;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-31" target="Ela1EfbPNly_L2jDQacJ-11">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="350" as="sourcePoint" />
             <mxPoint x="450" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-34" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE785;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="510" y="120" width="200" height="240" as="geometry" />
+          <mxGeometry x="480" y="153.1" width="220" height="190" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-35" value="OfflineAudioContext" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="530" y="109" width="100" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="Ela1EfbPNly_L2jDQacJ-37" value="soundtouch.js&lt;div&gt;PitchShifter&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="220" width="100" height="30" as="geometry" />
+          <mxGeometry x="500" y="143.1" width="100" height="50" as="geometry" />
         </mxCell>
         <mxCell id="Ela1EfbPNly_L2jDQacJ-39" value="Download" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.2d.download;" vertex="1" parent="1">
-          <mxGeometry x="587.6" y="255.2" width="44.8" height="44.8" as="geometry" />
+          <mxGeometry x="567.6" y="443.1" width="44.8" height="44.8" as="geometry" />
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-41" value="Offline bufferSourceNode&lt;div&gt;(can crop buffers)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="515" y="180" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-42" value="Web Audio Api&lt;div&gt;mediaElementSourceNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="170" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-43" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-10" target="Ela1EfbPNly_L2jDQacJ-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="350" as="sourcePoint" />
+            <mxPoint x="450" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-44" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-28" target="Ela1EfbPNly_L2jDQacJ-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="350" as="sourcePoint" />
+            <mxPoint x="450" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-45" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-42" target="Ela1EfbPNly_L2jDQacJ-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="350" as="sourcePoint" />
+            <mxPoint x="450" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-47" value="Audio Output" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=none;imageAspect=0;aspect=fixed;image=https://cdn0.iconfinder.com/data/icons/phosphor-fill-vol-4/256/speaker-simple-high-fill-128.png" vertex="1" parent="1">
+          <mxGeometry x="265" y="440" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-48" value="Wave encodr" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="373.1" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-51" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-28" target="Ela1EfbPNly_L2jDQacJ-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="80" as="sourcePoint" />
+            <mxPoint x="450" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-52" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-41" target="Ela1EfbPNly_L2jDQacJ-30">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="320" as="sourcePoint" />
+            <mxPoint x="460" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-53" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="320" as="sourcePoint" />
+            <mxPoint x="590" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-54" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="Ela1EfbPNly_L2jDQacJ-48">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="300" as="sourcePoint" />
+            <mxPoint x="460" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-55" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-48" target="Ela1EfbPNly_L2jDQacJ-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="320" as="sourcePoint" />
+            <mxPoint x="460" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-58" value="wavesurfer.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="225" y="100" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-59" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.61;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ela1EfbPNly_L2jDQacJ-42" target="Ela1EfbPNly_L2jDQacJ-58">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="320" as="sourcePoint" />
+            <mxPoint x="460" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ela1EfbPNly_L2jDQacJ-60" value="soundtouch.js Worklet&lt;div&gt;pitchShifterNode&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="522.5" y="270" width="135" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
