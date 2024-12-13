@@ -35,11 +35,17 @@ To use EarAid locally, follow these steps:
 4. Open your browser and navigate to `http://localhost`.
 
 ### Hosting
-Since browsers block WebAudioWorklets for security reasons if HTTPS is not used, to host EarAid for clients outside the host machine, you need TLS certificate.crt and private.key in the HTTPS folder, in the repo you'll find a self signed certificate and a key to make it work out the box, substitute them for safety. 
+Since browsers block WebAudioWorklets for security reasons if HTTPS is not used, to host EarAid for clients outside the host machine, you'll need TLS certificate.crt and private.key in the HTTPS folder, in the repo you'll find a self signed certificate and a key to make it work out the box, substitute them for safety. 
 
 To start the server, run:
 ```sh
 npm start
+```
+
+## Contributing
+Contributes are welcome, you'll find source code in EarAid/dev, JS scripts and dependencies are minified in one file with the command:
+```sh
+npm run build
 ```
 
 ## License
