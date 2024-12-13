@@ -355,17 +355,17 @@ function getLogarithmicVolume(value) {
 async function captureAudioWindowOnPlaybackTime() {
     const playbackTime = waveSurfer.getCurrentTime()
 
-    if (!audioFile) return null;
+    if (!audioFile) return null
 
     // Create a new AudioContext for processing
-    const decodeCtx = new AudioContext();
+    const decodeCtx = new AudioContext()
     
     // Get the audio file as an ArrayBuffer
-    const response = await fetch(audioFile.src);
-    const arrayBuffer = await response.arrayBuffer();
+    const response = await fetch(audioFile.src)
+    const arrayBuffer = await response.arrayBuffer()
     
     // Decode the original audio file
-    const audioBuffer = await decodeCtx.decodeAudioData(arrayBuffer);
+    const audioBuffer = await decodeCtx.decodeAudioData(arrayBuffer)
     
     if (!audioBuffer) return null
     
