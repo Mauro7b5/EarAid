@@ -33,11 +33,12 @@ To use EarAid locally, follow these steps:
     ```sh
     npm install
     ```
+
 ### Local Usage
 Start the HTTP server:
-    ```sh
-    npm run http
-    ```
+```sh
+npm run http
+```
 then check out the console for the port assigned.
 Open your browser and navigate to `http://localhost:<port>`, replacing `<port>` with the port number displayed in the console.
 
