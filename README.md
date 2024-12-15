@@ -17,22 +17,29 @@ EarAid is a web audio player designed for musicians who need a clean audio playe
 
 ## Usage
 
-### Local Usage
+### Installation
 To use EarAid locally, follow these steps:
 
-1. Clone the repository:
+1. If you don't have it, install Node.js from the [official website](https://nodejs.org/).
+2. Clone the repository:
     ```sh
     git clone https://github.com/Mauro7b5/EarAid.git
     ```
-2. Install the dependencies:
+3. Navigate to the directory:
+    ```sh
+    cd EarAid
+    ```
+4. Install the dependencies:
     ```sh
     npm install
     ```
-3. Start the HTTP server:
+### Local Usage
+Start the HTTP server:
     ```sh
     npm run http
     ```
-4. Open your browser and navigate to `http://localhost`.
+    then check out the console for the port assigned.
+Open your browser and navigate to `http://localhost:<port>`, replacing `<port>` with the port number displayed in the console.
 
 ### Hosting
 Since browsers block WebAudioWorklets for security reasons if HTTPS is not used, to host EarAid for clients outside the host machine, you'll need TLS certificate.crt and private.key in the HTTPS folder, in the repo you'll find a self signed certificate and a key to make it work out the box, substitute them for safety. 
