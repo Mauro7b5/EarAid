@@ -1,4 +1,4 @@
-# EarAid
+# EarAid ![EarAid Logo](./public/icons/earlogo.svg)
 
 ## Overview
 EarAid is a web audio player designed for musicians who need a clean audio player with helpful tools for transcribing, learning, and playing along with musical pieces.
