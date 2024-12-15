@@ -50,7 +50,7 @@ npm start
 ```
 
 ## Contributing
-Contributes are welcome, you'll find source code in EarAid/dev, JS scripts and dependencies are minified in one file with the command:
+Contributes are welcome, you'll find source code in `EarAid/dev`, JS scripts and dependencies are minified in one file with the command:
 ```sh
 npm run build
 ```
