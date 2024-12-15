@@ -38,7 +38,7 @@ Start the HTTP server:
     ```sh
     npm run http
     ```
-    then check out the console for the port assigned.
+then check out the console for the port assigned.
 Open your browser and navigate to `http://localhost:<port>`, replacing `<port>` with the port number displayed in the console.
 
 ### Hosting
