@@ -20,16 +20,17 @@ EarAid is a web audio player designed for musicians who need a clean audio playe
 ### Installation
 To use EarAid locally, follow these steps:
 
-1. If you don't have it, install Node.js from the [official website](https://nodejs.org/).
-2. Clone the repository:
+1. If you don't have it, install Node.js from the [official website](https://nodejs.org/) or your package manager.
+   
+3. Clone the repository:
     ```sh
     git clone https://github.com/Mauro7b5/EarAid.git
     ```
-3. Navigate to the directory:
+4. Navigate to the directory:
     ```sh
     cd EarAid
     ```
-4. Install the dependencies:
+5. Install the dependencies:
     ```sh
     npm install
     ```
