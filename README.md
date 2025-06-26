@@ -13,7 +13,7 @@ EarAid is a web audio player designed for musicians who need a clean audio playe
 - Pitch Shift: Adjust the audio pitch to hear the piece in a different key.
 - Speed Control: Slow down or speed up the playback without affecting pitch.
 - Volume Control: Adjust the master volume.
-- Piano and FFT: Use an HTML piano keyboard and activate an FFT note guessing visualization.
+- Piano and FFT: Use an on screen piano keyboard and activate an FFT note guessing visualization. 
 
 ## Usage
 
