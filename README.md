@@ -9,7 +9,7 @@ EarAid is a web audio player designed for musicians who need a clean audio playe
 - Selection and Looping: Select and loop specific parts of the audio.
 - Spectrogram View: Toggle spectrogram visualization for detailed frequency analysis.
 - Granular Freeze: Freeze the spectrum of a small time window around the cursor.
-- Download: Apply time stretch and pitch shift parameters to the audio file, crop the selection if active, and download the modified audio as a .wav file.
+- Download: Apply time stretch and pitch shift parameters to the audio file, crop the selection if active, and download the modified audio as a .wav file. 
 - Pitch Shift: Adjust the audio pitch to hear the piece in a different key.
 - Speed Control: Slow down or speed up the playback without affecting pitch.
 - Volume Control: Adjust the master volume.
