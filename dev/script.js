@@ -797,10 +797,11 @@ let frozenBuffer = null
 let freezeGain = null
 let grainVoices = []
 let grainPlayerContext = null
-const VOICES_NUMBER = 5
-const FREEZE_WINDOW = 0.1
-const GRAIN_DENSITY = 5
-const GRAIN_SPREAD = 0
+// Granular synthesis parameters
+const VOICES_NUMBER = 5         // Number of simultaneous grain voices for polyphonic granular playback
+const FREEZE_WINDOW = 0.1       // Duration in seconds of the audio window to freeze and granulate
+const GRAIN_DENSITY = 5         // Number of grains triggered per second (grain frequency)
+const GRAIN_SPREAD = 0          // Random timing variation between grains (0 = no randomization)
 const FREEZE_REVERB_DECAY = 1
 
 freezeButton.addEventListener("click", toggleFreeze)

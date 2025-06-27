@@ -452,13 +452,10 @@ async function toggleFreeze() {
     } else if (freezeActive) {
         // Stop granular playback
         if (grainPlayer) {
-            // grainPlayer.stop()
             grainVoices.forEach(voice => {
                 grainPlayer.stopVoice(voice)
             })
             grainVoices = []
-            // freezeGain.gain.input.linearRampToValueAtTime(0, audioContext.currentTime + 0.5)
-            // grainPlayer.dispose()
             grainPlayer = null
         }
         
