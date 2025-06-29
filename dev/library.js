@@ -401,6 +401,9 @@ function setupGranularPlayer(buffer) {
 
     freezeGain = audioContext.createGain()
     
+    // Get only the manual pitch shift (without speed compensation)
+    const manualPitchShift = pitchNumber.valueAsNumber
+    
     grainPlayer = new window.Granular({
         audioContext: audioContext,
         envelope: {
@@ -409,14 +412,14 @@ function setupGranularPlayer(buffer) {
         },
         density: GRAIN_DENSITY,
         spread: GRAIN_SPREAD,
-        pitch: 1
+        pitch: semitonesToFrequencyFactor(manualPitchShift)
       })
 
     freezeReverb = new Tone.Reverb(FREEZE_REVERB_DECAY)
       
     freezeGain = audioContext.createGain()
     Tone.connect(freezeGain, freezeReverb)
-    Tone.connect(freezeReverb, pitchShifter)
+    Tone.connect(freezeReverb, gainNode)
     
     grainPlayer.setBuffer(buffer)
     grainPlayer.disconnect()
