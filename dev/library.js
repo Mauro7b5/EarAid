@@ -9,9 +9,8 @@ function initSetup() {
                     setupGainNode()
                     Tone.setContext(audioContext)
                     pianoGainNode = audioContext.createGain().connect(gainNode)
-                    pianoCompressorNode = audioContext.createDynamicsCompressor().connect(pianoGainNode)
-                    synth = new Tone.PolySynth().connect(pianoCompressorNode)
-                    pianoGainNode.gain.value = 0.5
+                    synth = new Tone.PolySynth().connect(pianoGainNode)
+                    pianoGainNode.gain.value = 0.1
                 }
             }
         ).catch(
@@ -23,9 +22,8 @@ function initSetup() {
             setupGainNode()
             Tone.setContext(audioContext)
             pianoGainNode = audioContext.createGain().connect(gainNode)
-            pianoCompressorNode = audioContext.createDynamicsCompressor().connect(pianoGainNode)
-            synth = new Tone.PolySynth().connect(pianoCompressorNode)
-            pianoGainNode.gain.value = 0.5
+            synth = new Tone.PolySynth().connect(pianoGainNode)
+            pianoGainNode.gain.value = 0.1
         }
     }
 }
@@ -420,6 +418,7 @@ function setupGranularPlayer(buffer) {
     freezeGain = audioContext.createGain()
     Tone.connect(freezeGain, freezeReverb)
     Tone.connect(freezeReverb, gainNode)
+    Tone.connect(freezeReverb, analyserNode)
     
     grainPlayer.setBuffer(buffer)
     grainPlayer.disconnect()

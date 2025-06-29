@@ -5,7 +5,6 @@ let gainNode = null
 let analyserNode = null
 let analyserFFTSize = 4096
 let pianoGainNode = null
-let pianoCompressorNode = null
 
 window.addEventListener("click", initSetup)
 window.addEventListener("touchstart", initSetup)
