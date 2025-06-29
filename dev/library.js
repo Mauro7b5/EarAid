@@ -501,7 +501,7 @@ async function createBufferForDownload() {
     // console.log(pitchShiftValue)
 
     // Calculate window boundaries
-    const windowDuration = (endTime - startTime) * playRate
+    const windowDuration = (endTime - startTime) / playRate
     
     // Create offline context for processing
     const offlineCtx = new Tone.OfflineContext({
