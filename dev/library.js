@@ -1,6 +1,6 @@
 // INITIAL SETUP
 
-// sets up audiocontext, sets in in tonejs and sets up synth for piano
+// sets up audiocontext, sets up tonejs and sets up synth for piano
 function initSetup() {
     if (audioContext.state === "suspended") {
         audioContext.resume().then(
@@ -9,7 +9,13 @@ function initSetup() {
                     setupGainNode()
                     Tone.setContext(audioContext)
                     pianoGainNode = audioContext.createGain().connect(gainNode)
-                    synth = new Tone.PolySynth().connect(pianoGainNode)
+                    pianoCompressorNode = audioContext.createDynamicsCompressor()
+                    pianoCompressorNode.connect(pianoGainNode)
+                    pianoCompressorNode.threshold.value = -24
+                    pianoCompressorNode.knee.value = 30 
+                    pianoCompressorNode.ratio.value = 12
+                    pianoCompressorNode.attack.value = 0.01
+                    synth = new Tone.PolySynth().connect(pianoCompressorNode)
                     pianoGainNode.gain.value = 0.1
                 }
             }
@@ -22,7 +28,13 @@ function initSetup() {
             setupGainNode()
             Tone.setContext(audioContext)
             pianoGainNode = audioContext.createGain().connect(gainNode)
-            synth = new Tone.PolySynth().connect(pianoGainNode)
+            pianoCompressorNode = audioContext.createDynamicsCompressor()
+            pianoCompressorNode.connect(pianoGainNode)
+            pianoCompressorNode.threshold.value = -24
+            pianoCompressorNode.knee.value = 30 
+            pianoCompressorNode.ratio.value = 12
+            pianoCompressorNode.attack.value = 0.01
+            synth = new Tone.PolySynth().connect(pianoCompressorNode)
             pianoGainNode.gain.value = 0.1
         }
     }
